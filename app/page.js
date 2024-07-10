@@ -19,16 +19,16 @@ const Page = () => {
   };
 
   const deletehandle = (index) => {
-    let copytask = [...tasks]
-    copytask.splice(index, 1);
-    setTasks(copytask)
-  }
+    let copyTasks = [...tasks];
+    copyTasks.splice(index, 1);
+    setTasks(copyTasks);
+  };
 
   return (
     <>
       <h1 className='bg-black h-20 text-white text-center p-8 font-bold text-2xl'>My Todo List</h1>
-      <div className='flex justify-center'>
-        <form onSubmit={handleSubmit} className='flex flex-col items-center w-full max-w-lg p-4 border border-gray-300 rounded-lg'>
+      <div>
+        <form onSubmit={handleSubmit} className='flex flex-row h-screen items-center justify-center p-4 border bg-cover bg-center border-gray-300 rounded-lg' style={{ backgroundImage: `url(${process.env.PUBLIC_URL}/public\pexels-cmonphotography-1809644.jpg)` }}>
           <input
             type="text"
             className="text-2xl font-semibold p-4 border-zinc-700 border-2 m-4"
@@ -51,17 +51,18 @@ const Page = () => {
       <hr />
       <div className='bg-slate-200 p-5'>
         {tasks.length > 0 ? (
-          <ul >
+          <ul>
             {tasks.map((task, index) => (
               <li key={index} className='flex justify-between mb-4'>
                 <div className='flex items-center justify-between mb-5 w-2/3'>
-                <h5 className='text-3xl font-bold'>{task.title}</h5>
-                <h6>{task.desc}</h6></div>
+                  <h5 className='text-3xl font-bold'>{task.title}</h5>
+                  <h6>{task.desc}</h6>
+                </div>
                 <button className='border-2 text-white bg-zinc-800 py-2 px-4 rounded-xl'
-                onClick={()=>{
-                  deletehandle(index)
-                }}
-                >Delete</button>
+                  onClick={() => deletehandle(index)}
+                >
+                  Delete
+                </button>
               </li>
             ))}
           </ul>
@@ -74,3 +75,4 @@ const Page = () => {
 }
 
 export default Page;
+
